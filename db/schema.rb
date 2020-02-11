@@ -12,34 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2020_02_10_124948) do
 
-  create_table "attendees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "memo_id", null: false
-    t.integer "user_id", null: false
+  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "author", null: false
+    t.boolean "is_read", null: false
     t.datetime "discarded_at"
   end
 
-  create_table "memos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "post_user_id", null: false
-    t.string "memo", null: false
-    t.datetime "post_date", null: false
-    t.datetime "discarded_at"
-  end
-
-  create_table "project_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "project_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "discarded_at"
-  end
-
-  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "project_name", null: false
-    t.datetime "discarded_at"
-  end
-
-  create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "memo_id", null: false
-    t.integer "tagu", null: false
+  create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.integer "book_id", null: false
+    t.string "memo"
+    t.date "date", null: false
     t.datetime "discarded_at"
   end
 
