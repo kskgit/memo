@@ -13,15 +13,13 @@
 ActiveRecord::Schema.define(version: 2020_02_10_124948) do
 
   create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "author", null: false
-    t.boolean "is_read", null: false
+    t.string "volume_id", null: false
+    t.boolean "is_readed", default: false, null: false
     t.datetime "discarded_at"
   end
 
   create_table "histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "book_id", null: false
-    t.string "memo"
     t.date "date", null: false
     t.datetime "discarded_at"
   end
