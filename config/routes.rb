@@ -6,5 +6,7 @@ Rails.application.routes.draw do
   end
 
   resources :books
+
+  post '/send_mail/send_recommend', to: 'send_mail#send_recommend', as: 'send_mail'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
