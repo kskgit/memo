@@ -56,6 +56,11 @@ class HistoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def history_params
-      params.fetch(:history, {})
+      params.fetch(:history_form, {}).permit(
+        :book_id,
+        :page_number,
+        :memo,
+        :date
+      )
     end
 end
