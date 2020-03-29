@@ -3,7 +3,7 @@ class HistoriesController < ApplicationController
   # GET /histories/1
   def show
     result = []
-    histories = History.where(book_id: params[:book_id])
+    histories = History.where(book_id: params[:id]).order(page_number: "DESC")
     if histories.present?
       histories.each do |history|
         obj = {}
