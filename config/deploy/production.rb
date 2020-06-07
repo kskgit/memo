@@ -3,17 +3,28 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-# server "example.com", user: "deploy", roles: %w{app db web}, my_property: :my_value
-# server "example.com", user: "deploy", roles: %w{app web}, other_property: :other_value
-# server "db.example.com", user: "deploy", roles: %w{db}
+# server 'example.com', user: 'deploy', roles: %w{app db web}, my_property: :my_value
+# server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
+# server 'db.example.com', user: 'deploy', roles: %w{db}
 
+server '35.192.107.151', user: 'nakaokeisuke', roles: %w[web app db]
 
+set :deploy_to, '/var/www/book_memo_api'
+set :default_env,
+    'RACK_ENV' => 'production',
+    'RAILS_ENV' => 'production'
+set :puma_state, "#{shared_path}/tmp/pids/puma.state"
+set :puma_pid,   "#{shared_path}/tmp/pids/puma.pid"
+
+set :asset_sync_enabled, false
+
+set :puma_conf, "#{shared_path}/config/puma.rb"
+set :pty, false
 
 # role-based syntax
 # ==================
-
 # Defines a role with one or multiple servers. The primary server in each
-# group is considered to be the first unless any hosts have the primary
+# group is considered to be the first unless any  hosts have the primary
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
@@ -41,21 +52,27 @@
 #
 # Global options
 # --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+set :ssh_options, {
+  keys: %w[/.ssh/id_rsa],
+  forward_agent: true,
+  auth_methods: %w[publickey],
+  port: 50100
+}
+
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
-# server "example.com",
-#   user: "user_name",
+# server 'example.com',
+#   user: 'user_name',
 #   roles: %w{web app},
 #   ssh_options: {
-#     user: "user_name", # overrides user setting above
+#     user: 'user_name', # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
 #     forward_agent: false,
 #     auth_methods: %w(publickey password)
-#     # password: "please use keys"
+#     # password: 'please use keys'
 #   }
+set :rails_env, :production
+set :puma_env, :production
+
+ask :branch, 'master'

@@ -52,9 +52,9 @@ gem "discard"
 
 group :development do
   # capistrano
-  gem 'capistrano', '~> 3.11.0', require: false
-  gem 'capistrano-bundler', '~> 1.4.0', require: false
-  gem 'capistrano-rails', '~> 1.4.0', require: false
-  gem 'capistrano-rbenv', '~> 2.1.4', require: false
-  gem 'capistrano3-puma', '~> 3.1.1', require: false
+  gem 'capistrano', '= 3.5.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano3-puma'
 end
