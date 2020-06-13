@@ -52,4 +52,4 @@ production:
   database: api_production
   username: root
   password: 3#Fp&P9Rghdr
-  host: 35.238.95.8
+  socket:   "/cloudsql/book-memo-278412:us-central1:r3grashopper"
