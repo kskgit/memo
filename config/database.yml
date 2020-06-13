@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: api_production
-  username: api
-  password: <%= ENV['API_DATABASE_PASSWORD'] %>
+  username: root
+  password: 3#Fp&P9Rghdr
+  host: 35.238.95.8

@@ -7,7 +7,7 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
-server '35.192.107.151', user: 'nakaokeisuke', roles: %w[web app db]
+server '35.209.31.21', user: 'nakaokeisuke', roles: %w[web app db]
 
 set :deploy_to, '/var/www/book_memo_api'
 set :default_env,
