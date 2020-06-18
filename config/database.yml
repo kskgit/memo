@@ -51,5 +51,5 @@ production:
   <<: *default
   database: api_production
   username: root
-  password: 3#Fp&P9Rghdr
-  socket:   "/cloudsql/book-memo-278412:us-central1:r3grashopper"
+  password: r3grashopper
+  host: 127.0.0.1
