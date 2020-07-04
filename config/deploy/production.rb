@@ -9,16 +9,11 @@
 
 server '35.209.31.21', user: 'nakaokeisuke', roles: %w[web app db]
 
-set :deploy_to, '/var/www/book_memo_api'
 set :default_env,
     'RACK_ENV' => 'production',
     'RAILS_ENV' => 'production'
-set :puma_state, "#{shared_path}/tmp/pids/puma.state"
-set :puma_pid,   "#{shared_path}/tmp/pids/puma.pid"
 
 set :asset_sync_enabled, false
-
-set :puma_conf, "#{shared_path}/config/puma.rb"
 set :pty, false
 
 # role-based syntax
@@ -75,4 +70,4 @@ set :ssh_options, {
 set :rails_env, :production
 set :puma_env, :production
 
-ask :branch, 'master'
+set :branch, 'master'

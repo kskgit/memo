@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://localhost:9010'
+    origins 'http://localhost:9010', 'book-memo.work'
 
     resource '*',
       headers: :any,
