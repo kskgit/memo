@@ -50,6 +50,8 @@ gem 'letter_opener_web'
 
 gem "discard"
 
+gem 'faraday'
+
 group :development do
   # capistrano
   gem 'capistrano', '= 3.5.0'
