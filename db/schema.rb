@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_20_035747) do
+ActiveRecord::Schema.define(version: 2020_07_13_025014) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -44,14 +44,6 @@ ActiveRecord::Schema.define(version: 2020_03_20_035747) do
     t.integer "page_number"
     t.string "memo"
     t.date "date", null: false
-    t.datetime "discarded_at"
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "mail", null: false
-    t.string "pass_word", null: false
     t.datetime "discarded_at"
   end
 
