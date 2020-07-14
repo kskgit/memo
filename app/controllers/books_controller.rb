@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  require 'open-uri'
   before_action :set_book, only: [:show, :update, :destroy]
 
   # GET /books
@@ -16,7 +17,19 @@ class BooksController < ApplicationController
   # POST /books
   def create
     @book = Book.new(book_params)
+    # Rakuten Book API経由での画像を保存する場合
+    if params[:image_url]
+      file = open(params[:image_url])
 
+      extname = File.extname(params[:image_url])
+      # .jpg?_ex=120x120←この様に拡張子の後に?区切りでサイズの記載があるため切り取り
+      question_length = extname.index("?")
+      extname.slice!(question_length..extname.length)
+
+      filename = "#{params[:uid]}#{Time.now}"
+
+      @book.image.attach(io: file, filename: filename, content_type: extname)
+    end
     if @book.save
       render json: @book, status: :created, location: @book
     else
@@ -47,8 +60,11 @@ class BooksController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def book_params
       params.require(:book).permit(
+        :uid,
+        :artist_name,
+        :title,
         :is_readed,
-        :volume_id
+        :image
       )
     end
 end
