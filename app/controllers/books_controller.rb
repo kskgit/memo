@@ -4,7 +4,7 @@ class BooksController < ApplicationController
 
   # GET /books
   def index
-    @books = Book.where(is_readed: params[:is_readed])
+    @books = Book.where(is_readed: params[:is_readed]).where(uid: params[:uid])
 
     render json: @books
   end
