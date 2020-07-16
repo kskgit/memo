@@ -17,7 +17,6 @@ class BooksController < ApplicationController
   # POST /books
   def create
     @book = Book.new(book_params)
-    # Rakuten Book API経由での画像を保存する場合
     if params[:image_url]
       file = open(params[:image_url])
 
@@ -35,6 +34,18 @@ class BooksController < ApplicationController
     else
       render json: @book.errors, status: :unprocessable_entity
     end
+  end
+
+  # POST /books
+  def create_by_multipart_form
+    Book.create(
+      image: params[:image],
+      uid: params[:uid],
+      artist_name: params[:artist_name],
+      title: params[:title]
+    )
+
+    render json: { status: 'success' }, status: :ok
   end
 
   # PATCH/PUT /books/1
@@ -63,8 +74,7 @@ class BooksController < ApplicationController
         :uid,
         :artist_name,
         :title,
-        :is_readed,
-        :image
+        :is_readed
       )
     end
 end

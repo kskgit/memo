@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :books
+  resources :books, only: %i[index show create update destroy] do
+    collection do
+      post :create_by_multipart_form
+    end
+  end
 
   resources :histories
 
