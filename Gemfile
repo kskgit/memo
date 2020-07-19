@@ -52,6 +52,8 @@ gem "discard"
 
 gem 'faraday'
 
+gem 'google-cloud-storage'
+
 group :development do
   # capistrano
   gem 'capistrano', '= 3.5.0'
