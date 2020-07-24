@@ -2,7 +2,7 @@ class BookSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
   attributes :id,
   :uid,
-  :artist_name,
+  :author,
   :title,
   :is_readed,
   :image

@@ -41,7 +41,7 @@ class BooksController < ApplicationController
     Book.create(
       image: params[:image],
       uid: params[:uid],
-      artist_name: params[:artist_name],
+      author: params[:author],
       title: params[:title]
     )
 
@@ -72,7 +72,7 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit(
         :uid,
-        :artist_name,
+        :author,
         :title,
         :is_readed
       )
