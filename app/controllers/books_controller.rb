@@ -74,7 +74,8 @@ class BooksController < ApplicationController
         :uid,
         :author,
         :title,
-        :is_readed
+        :is_readed,
+        :page_number
       )
     end
 end

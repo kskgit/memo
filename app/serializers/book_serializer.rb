@@ -5,7 +5,8 @@ class BookSerializer < ActiveModel::Serializer
   :author,
   :title,
   :is_readed,
-  :image
+  :image,
+  :page_number
 
   def image
     url_for(object.image) if object.image.attachment
