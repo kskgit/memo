@@ -5,13 +5,7 @@ class BooksController < ApplicationController
   # GET /books
   def index
     @books = Book.where(is_readed: params[:is_readed]).where(uid: params[:uid])
-
-    render json: @books
-  end
-
-  # GET /books/1
-  def show
-    render json: @book
+    render json: @books, status: :ok
   end
 
   # POST /books

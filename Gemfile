@@ -61,4 +61,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
   gem 'capistrano3-puma'
+  # RSpec
+  gem 'rspec-rails', '~> 3.6'
 end
