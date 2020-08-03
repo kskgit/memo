@@ -39,21 +39,25 @@ class BooksController < ApplicationController
       title: params[:title]
     )
 
-    render json: { status: 'success' }, status: :ok
+    render status: :created
   end
 
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-      render json: @book
+      render json: @book, status: :no_content
     else
-      render json: @book.errors, status: :unprocessable_entity
+      render json: @book.errors
     end
   end
 
   # DELETE /books/1
   def destroy
-    @book.discard
+  if @book.discard
+    render status: :no_content
+  else
+    render json: @book.errors
+  end
   end
 
   private
