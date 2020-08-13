@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   require 'open-uri'
-  before_action :set_book, only: [:show, :update, :destroy]
+  before_action :set_book, only: %i[show update destroy]
 
   # GET /books
   def index
@@ -16,7 +16,7 @@ class BooksController < ApplicationController
 
       extname = File.extname(params[:image_url])
       # .jpg?_ex=120x120←この様に拡張子の後に?区切りでサイズの記載があるため切り取り
-      question_length = extname.index("?")
+      question_length = extname.index('?')
       extname.slice!(question_length..extname.length)
 
       filename = "#{params[:uid]}#{Time.now}"
@@ -53,27 +53,28 @@ class BooksController < ApplicationController
 
   # DELETE /books/1
   def destroy
-  if @book.discard
-    render status: :no_content
-  else
-    render json: @book.errors
-  end
+    if @book.discard
+      render status: :no_content
+    else
+      render json: @book.errors
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_book
-      @book = Book.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def book_params
-      params.require(:book).permit(
-        :uid,
-        :author,
-        :title,
-        :is_readed,
-        :page_number
-      )
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_book
+    @book = Book.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def book_params
+    params.require(:book).permit(
+      :uid,
+      :author,
+      :title,
+      :is_readed,
+      :page_number
+    )
+  end
 end
