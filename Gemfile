@@ -63,4 +63,6 @@ group :development do
   gem 'capistrano3-puma'
   # RSpec
   gem 'rspec-rails', '~> 3.6'
+  gem 'rubocop', require: false
+  gem 'pre-commit'
 end
