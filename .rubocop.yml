@@ -23,9 +23,14 @@ AndOr:
   Enabled: false
 
 # 対象外ファイル
-Exclude:
-  - 'db/**/*'
-  - 'config/**'
-
-Rails:
-  Enabled: true
+AllCops:
+  Exclude:
+    - './**'
+    - './bin/**'
+  Include:
+    - 'app/controllers/**'
+    - 'app/model/**'
+    - 'app/serializers/**'
+    - 'test/controllers/**'
+  Rails:
+    Enabled: true
