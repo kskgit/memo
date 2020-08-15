@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SendMailController < ApplicationController
   def send_recommend
     user = '紹介者'
