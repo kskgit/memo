@@ -13,9 +13,7 @@ class BooksController < ApplicationController
   # POST /books
   def create
     @book = Book.new(book_params)
-    if params[:image_url]
-      attach_book_image(params[:image_url], params[:uid])
-    end
+    attach_book_image(params[:image_url], params[:uid]) if params[:image_url]
     if @book.save
       render json: @book, status: :created, location: @book
     else
