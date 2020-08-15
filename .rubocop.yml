@@ -2,6 +2,10 @@
 AsciiComments:
   Enabled: false
 
+  # top-level class documentation commentの除外
+Documentation:
+  Enabled: false
+
 # 対象ファイル
 AllCops:
   Exclude:

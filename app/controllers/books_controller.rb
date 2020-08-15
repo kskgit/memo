@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-  require 'open-uri'
   before_action :set_book, only: %i[show update destroy]
 
   # GET /books
   def index
     @books = Book.where(is_readed: params[:is_readed]).where(uid: params[:uid])
+
     render json: @books, status: :ok
   end
 
@@ -14,16 +14,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if params[:image_url]
-      file = open(params[:image_url])
-
-      extname = File.extname(params[:image_url])
-      # .jpg?_ex=120x120←この様に拡張子の後に?区切りでサイズの記載があるため切り取り
-      question_length = extname.index('?')
-      extname.slice!(question_length..extname.length)
-
-      filename = "#{params[:uid]}#{Time.now}"
-
-      @book.image.attach(io: file, filename: filename, content_type: extname)
+      attach_book_image(params[:image_url], params[:uid])
     end
     if @book.save
       render json: @book, status: :created, location: @book
@@ -77,6 +68,21 @@ class BooksController < ApplicationController
       :title,
       :is_readed,
       :page_number
+    )
+  end
+
+  def attach_book_image(url, uid)
+    file = URI.parse(url).open
+    extname = File.extname(url)
+    # .jpg?_ex=120x120←この様に拡張子の後に?区切りでサイズの記載があるため切り取り
+    question_length = extname.index('?')
+    extname.slice!(question_length..extname.length)
+
+    filename = "#{uid}#{Time.now}"
+    @book.image.attach(
+      io: file,
+      filename: filename,
+      content_type: extname
     )
   end
 end
