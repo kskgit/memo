@@ -13,6 +13,7 @@ RSpec.describe BooksController, type: :controller do
   describe "#create" do
     it "responds successfully" do
       post :create, params: {
+        image_url: 'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/0706/4910204470706.jpg?_ex=200x200',
         author: 'タイトル',
         title: '著者',
         uid: 'glzm8HISc6SK1qk6L20HSQZrcZN2'
