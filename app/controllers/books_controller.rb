@@ -36,7 +36,7 @@ class BooksController < ApplicationController
   # PATCH/PUT /books/1
   def update
     if @book.update(book_params)
-      render json: @book, status: :no_content
+      render json: @book, status: :ok
     else
       render json: @book.errors
     end
