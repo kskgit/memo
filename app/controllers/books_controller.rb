@@ -83,5 +83,4 @@ class BooksController < ApplicationController
       content_type: extname
     )
   end
-
 end
