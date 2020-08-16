@@ -9,3 +9,17 @@ RSpec.describe BooksController, type: :controller do
     end
   end
 end
+
+RSpec.describe BooksController, type: :controller do
+  describe "#create" do
+    # 正常なレスポンスか？
+    it "responds successfully" do
+      get :create, params: {
+        author: 'タイトル',
+        title: '著者',
+        uid: 'glzm8HISc6SK1qk6L20HSQZrcZN2'
+      }
+      expect(response.status).to eq(201)
+    end
+  end
+end
