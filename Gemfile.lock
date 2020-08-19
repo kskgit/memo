@@ -169,7 +169,7 @@ GEM
     pre-commit (0.39.0)
       pluginator (~> 1.5)
     public_suffix (4.0.3)
-    puma (3.12.4)
+    puma (3.12.6)
     rack (2.2.3)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
