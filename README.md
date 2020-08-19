@@ -1,24 +1,24 @@
-# README
+## book_memoについて
+本の栞代わりになるミニWebサービスです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://hatehate-nazenaze.hatenablog.com/entry/2020/08/19/123406?_ga=2.135628147.390248624.1597808049-246252316.1578668264
 
-Things you may want to cover:
+## 開発環境構築
+### コンテナをビルドする
+```
+docker-compose build
+```
+### データベースを作成する
+```
+docker-compose run web rake db:create
+```
 
-* Ruby version
+### テーブルを作成する
+```
+docker-compose run web rake db:migrate
+```
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### 開発環境を立ち上げる
+```
+docker-compose up
+```
