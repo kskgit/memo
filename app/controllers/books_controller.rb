@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   require 'open-uri'
   before_action :set_book, only: %i[show update destroy]
 
-  # GET /books
+  # GET /booksだよ
   def index
     @books = Book.where(is_readed: params[:is_readed]).where(uid: params[:uid])
 
