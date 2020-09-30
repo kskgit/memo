@@ -12,6 +12,10 @@ jobs:
     steps:
     - name: Checkout Branch
       uses: actions/checkout@v2
+    - name: Install SSH key
+      uses: webfactory/ssh-agent@v0.1.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - name: Set up Ruby
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
