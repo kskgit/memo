@@ -1,0 +1,15 @@
+setup:
+  addons:
+    - plan: cleardb:ignite
+      as: DATABASE
+  config:
+    DATABASE_URL: mysql2://be7dc33b33de4e:b7576d9f@us-cdbr-east-05.cleardb.net/heroku_1d95a7bd6750d39?reconnect=true
+    RAILS_ENV: production
+    RACK_ENV: production
+build:
+  docker:
+    web: Dockerfile
+  config:
+    WORKDIR: app
+run:
+  web: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
